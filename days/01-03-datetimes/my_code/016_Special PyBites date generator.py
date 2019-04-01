@@ -1,6 +1,3 @@
-# for thing in ('Got %s' % number for number in range(10)):
-#     print(thing)
-    
 '''
 Bite 16. Special PyBites date generator
 Write a generator that returns special dates for PyBites:
@@ -45,20 +42,25 @@ from datetime import datetime, timedelta
 PYBITES_BORN = datetime(year=2016, month=12, day=19)
 
 def gen_special_pybites_dates():
-    # date_1 = datetime.today()
-    # end_date = date_1 + timedelta(days=100)
-    # print(date_1)
-    # print(end_date)
-    start_date = PYBITES_BORN
-    end_date = start_date + timedelta(days=100)
-    while start_date < end_date:
-        yield start_date
-        start_date = start_date + timedelta(days=1) # this counts every day for a hundred days. 
-        
+    days = 0
+    while True:
+        days += 1
+        if days % 100 == 0 or days % 365 == 0:
+            yield PYBITES_BORN + timedelta(days=days)
 
-def main():
-    print(PYBITES_BORN)
-    print(list(gen_special_pybites_dates()))
 
-if __name__ == '__main__':
-    main()
+# def gen_special_pybites_dates():
+#     start_date = PYBITES_BORN
+#     end_date = start_date + timedelta(days=100)
+#     while start_date <= end_date:
+#         yield start_date
+#         start_date = start_date + timedelta(days=1) # this counts every day for a hundred days.
+
+        # failed because I hadn't shown the 100 days mark??? So elected to do % 365 above.
+
+# def main():
+#     print(PYBITES_BORN)
+#     print(list(gen_special_pybites_dates()))
+#
+# if __name__ == '__main__':
+#     main()
